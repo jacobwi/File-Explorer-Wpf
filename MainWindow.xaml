@@ -39,7 +39,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer x:Name="scrollView" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Grid.Row="1">
             <TreeView x:Name="VolumeDrives">
                 <TreeView.Resources>
                     <Style TargetType="{x:Type TreeViewItem}">

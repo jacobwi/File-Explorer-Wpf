@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,8 +17,12 @@ namespace FileExplorer
         public MainWindow()
         {
             InitializeComponent();
+
+            versionLabel.Content = Assembly.GetExecutingAssembly().GetName().Version;
         }
 
+        // Runs when the window is loaded
+        // Gets drives
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (var item in Directory.GetLogicalDrives())
@@ -36,6 +41,7 @@ namespace FileExplorer
             }
         }
 
+        // When a drive is expanded
         private void Drive_Expanded(object sender, RoutedEventArgs e)
         {
             var drive = (TreeViewItem)sender;
@@ -155,6 +161,13 @@ namespace FileExplorer
             catch (Exception)
             {
             }
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 }

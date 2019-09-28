@@ -4,6 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Version>0.0.1</Version>
+    <Copyright>Jacob William</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
